@@ -1,0 +1,71 @@
+CREATE TABLE `person` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(50) NOT NULL,
+    `cpf` VARCHAR(20) NOT NULL,
+    `rg` VARCHAR(20) NOT NULL,
+    `gender` VARCHAR(20) NOT NULL,
+    `created_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT pk_person PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `employee` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `registration` VARCHAR(50) NOT NULL,
+    `name` VARCHAR(20) NOT NULL,
+    `created_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT pk_employee PRIMARY KEY (id),
+    CONSTRAINT fk_employee_person FOREIGN KEY(id) REFERENCES person(id)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `income` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `initial_date` VARCHAR(20) NOT NULL,
+    `final_date` VARCHAR(20) NOT NULL,
+    `salary` DOUBLE NOT NULL,
+    `created_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT pk_income PRIMARY KEY (id),
+    CONSTRAINT fk_income_person FOREIGN KEY(id) REFERENCES person(id)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `email` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `people_id` INT NOT NULL,
+    `email` VARCHAR(20) NOT NULL,
+    `created_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT pk_email PRIMARY KEY(id),
+    CONSTRAINT fk_email_person FOREIGN KEY(id) REFERENCES person(id)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `address` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `people_id` INT NOT NULL,
+    `address` VARCHAR(255) NOT NULL,
+    `district` VARCHAR(255) NOT NULL,
+    `state` VARCHAR(255) NOT NULL,
+    `city` VARCHAR(255) NOT NULL,
+    `cep` INT NOT NULL,
+    `created_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT pk_address PRIMARY KEY (id),
+    CONSTRAINT fk_address_person FOREIGN KEY(id) REFERENCES person(id)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `phone` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `people_id` INT NOT NULL,
+    `ddd` INT NOT NULL,
+    `number` VARCHAR(20) NOT NULL,
+    `phone_extension` VARCHAR(10) NOT NULL,
+    `created_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT pk_phone PRIMARY KEY(id),
+    CONSTRAINT fk_phone_person FOREIGN KEY(id) REFERENCES person(id)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `user` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `people_id` INT NOT NULL,
+    `login` VARCHAR(255) NOT NULL,
+    `hash` VARCHAR(255) NOT NULL,
+    `created_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT pk_user PRIMARY KEY (id),
+    CONSTRAINT fk_user_person FOREIGN KEY(id) REFERENCES person(id)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
