@@ -20,14 +20,4 @@ public class AddressDto implements Serializable {
     private String state;
     private String city;
     private Integer cep;
-
-    public AddressDto(Address address) {
-        this.code = address.getId();
-        this.address = address.getAddress();
-        this.district = address.getDistrict();
-        this.state = address.getState();
-        this.city = address.getCity();
-        this.cep = address.getCep();
-        this.district = address.getDistrict();
-    }
 }

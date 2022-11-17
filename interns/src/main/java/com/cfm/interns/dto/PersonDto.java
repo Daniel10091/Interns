@@ -23,5 +23,4 @@ public class PersonDto implements Serializable {
     private List<EmailDto> mails;
     private List<AddressDto> address;
     private List<PhoneDto> phones;
-
 }

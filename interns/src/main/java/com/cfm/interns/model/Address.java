@@ -1,5 +1,6 @@
 package com.cfm.interns.model;
 
+import com.cfm.interns.dto.AddressDto;
 import lombok.*;
 
 import javax.persistence.*;

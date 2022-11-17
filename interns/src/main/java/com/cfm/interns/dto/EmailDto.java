@@ -17,10 +17,4 @@ public class EmailDto implements Serializable {
     private Integer code;
     private String initial_date;
     private String final_date;
-
-    public EmailDto(Email email) {
-        this.code = email.getId();
-        this.initial_date = email.getInitial_date();
-        this.final_date = email.getFinal_date();
-    }
 }

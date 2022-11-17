@@ -18,11 +18,4 @@ public class PhoneDto implements Serializable {
     private Integer ddd;
     private String number;
     private String phone_extension;
-
-    public PhoneDto(Phone phone) {
-        this.code = phone.getId();
-        this.ddd = phone.getDdd();
-        this.number = phone.getNumber();
-        this.phone_extension = phone.getPhone_extension();
-    }
 }

@@ -1,5 +1,6 @@
 package com.cfm.interns.model;
 
+import com.cfm.interns.dto.PhoneDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,5 +33,4 @@ public class Phone {
 
     @Column(name = "phone_extension", nullable = false, length = 10)
     private String phone_extension;
-
 }

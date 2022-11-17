@@ -1,5 +1,6 @@
 package com.cfm.interns.model;
 
+import com.cfm.interns.dto.EmailDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -30,5 +31,4 @@ public class Email {
 
     @Column(name = "final_date", nullable = false, length = 20)
     private String final_date;
-
 }
